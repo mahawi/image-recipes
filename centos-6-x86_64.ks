@@ -72,6 +72,9 @@ cloud-utils
 # Cleanup after yum
 yum clean all
 
+#disable zeroconf for getting access for vm to openstack metadata service, otherwise the vm gets route: 169.254.0.0 netmask 255.255.0.0 by booting and cant get metadata
+echo NOZEROCONF=yes >> /etc/sysconfig/network
+
 # Rename the default cloud-init user to 'centos'
 
 # cloud-init 0.6 config format
