@@ -3,6 +3,17 @@ image-recipes
 
 Kickstart files and scripts for building minimal VM images.
 
+Instalation
+-----------
+
+Howto: http://hackstack.org/x/blog/2013/04/25/a-centos-6-image-for-openstack/
+
+Basic commands:
+
+virt-install     --name centos-6     --ram 1024     --cpu host     --vcpus 1     --nographics     --os-type=linux     --os-variant=rhel6     --location=http://mirrors.kernel.org/centos/6/os/x86_64     --initrd-inject=centos-6-x86_64.ks     --extra-args="ks=file:/centos-6-x86_64.ks text console=tty0 utf8 console=ttyS0,115200"     --disk path=/var/lib/libvirt/images/centos-6-x86_64.img,size=2,bus=virtio     --force     --noreboot
+virt-sysprep --no-selinux-relabel -a /var/lib/libvirt/images/centos-6-x86_64.img
+virt-sparsify --convert qcow2 --compress /var/lib/libvirt/images/centos-6.img centos-6-x86_64.qcow2
+
 Features
 --------
 
